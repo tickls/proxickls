@@ -1,7 +1,7 @@
 {
   "name": "proxickls",
   "version": "0.1.0",
-  "description": "A lightweight HTTP(S) mock proxy aimed at mocking responses of REST APIs for front-end testing purposes  ",
+  "description": "A lightweight HTTP(S) mock proxy aimed at mocking responses of REST APIs for front-end testing purposes",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
