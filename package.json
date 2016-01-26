@@ -1,0 +1,29 @@
+{
+  "name": "proxickls",
+  "version": "0.1.0",
+  "description": "A lightweight HTTP(S) mock proxy aimed at mocking responses of REST APIs for front-end testing purposes  ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tickls/proxickls.git"
+  },
+  "keywords": [
+    "proxy",
+    "mock",
+    "test",
+    "testing"
+  ],
+  "author": "Evan Kluin",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "http-proxy": "^1.11.2",
+    "optimist": "^0.6.1"
+  },
+  "bugs": {
+    "url": "https://github.com/tickls/proxickls/issues"
+  },
+  "homepage": "https://github.com/tickls/proxickls#readme"
+}
