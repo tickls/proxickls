@@ -31,10 +31,11 @@ Content body
              "Authorization": "Bearer ABCDEFABCDEFABCDEFABCDEFABCDEF",
              "X-Proxickls": "Some Mock Response Header"
          },
-         delay : 2000
+         delay : 2000,
+         times: 5
      }
 
-Setting a delay is optional!
+Setting a delay and/or a number of times are both optional! If no delay is given, it defaults to 0. If no number of times is given, it defaults to ∞.
 
   * Clearing all mock responses can be cleared with sending a DELETE call to http://localhost:5080/proxy/clearAllMockResponses
   * Clearing a specific mock response can be done by sending a DELETE call to http://localhost:5080/proxy/clearMockResponse with the following JSON structure as body:
