@@ -1,9 +1,4 @@
-A lightweight HTTP(S) mock proxy aimed at mocking responses of REST APIs for front-end testing purposes.
-
-&nbsp;
-&nbsp;
-
-## Starting the proxy
+### *Starting the proxy*
 
 After you have installed [NodeJS](http://www.nodejs.org) and ran `npm install`: 
 
