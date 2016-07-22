@@ -1,18 +1,24 @@
 A lightweight HTTP(S) mock proxy aimed at mocking responses of REST APIs for front-end testing purposes.
 
+&nbsp;
+&nbsp;
 
 ## Starting the proxy
+
+After you have installed [NodeJS](http://www.nodejs.org) and ran `npm install`: 
 
 ``node bin/index --target=http://targethost.com --port=5001 (optional)``
 
 Where ``port`` is the port the proxy server will listen on and ``target`` is the server to which calls that are not mocked will be proxied.
 
+&nbsp;
+&nbsp;
 
 ### Setting a mock response
 
-``/proxy/setMockResponse``
-
 ``Method:`` **PUT**
+
+``/proxy/setMockResponse``
 
 ##### *Content body*
 
@@ -42,9 +48,6 @@ Set multiple delays at once. This will also affect existing mock responses!
 
 ``/proxy/setDelays``
 
-&nbsp;
-&nbsp;
-
 ##### *Content body*
 
      {
@@ -68,9 +71,6 @@ Set multiple delays at once. This will also affect existing mock responses!
 ``Method:`` **DELETE**
 
 ``/proxy/clearMockResponse``
-
-&nbsp;
-&nbsp;
 
 ##### *Content body*
 
@@ -108,9 +108,6 @@ Clear all delays. Does *NOT* clear any mock responses however!
 Generate a list of all the requests that have been proxied through the proxy server and their responses, if any.
 
 ``/proxy/listProxiedRequests?limit=50``
-
-&nbsp;
-&nbsp;
 
 ##### **Parameters:**
 
