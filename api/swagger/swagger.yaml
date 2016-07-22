@@ -1,20 +1,33 @@
-# this is an example of the Uber API
-# as a demonstration of an API spec in YAML
+# Swagger API description for proxickls. https://github.com/ronaldw/proxickls
 swagger: '2.0'
 info:
-  title: Uber API
-  description: Move your app forward with the Uber API
+  title: Proxickls API
+  description: A lightweight HTTP(S) mock proxy aimed at mocking responses of REST APIs for front-end testing purposes.
   version: "1.0.0"
 # the domain of the service
 host: api.uber.com
 # array of all schemes that your API supports
 schemes:
-  - https
+  - http
 # will be prefixed to all paths
-basePath: /v1
-produces:
+basePath: /proxy
+consumes:
   - application/json
 paths:
+  /setMockResponse:
+    put:
+      summary: Set a mock response for a given URL.
+      responses:
+        200: 
+          description: Mock response was succesfully set.
+      parameters:
+        - name: Mock response specification JSON object.
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/MockResponse"
+          
+
   /products:
     get:
       summary: Product Types
@@ -180,6 +193,34 @@ paths:
           schema:
             $ref: '#/definitions/Error'
 definitions:
+
+  MockResponse:
+    type: object
+    properties:
+      url:
+        type: string
+      statusCode: 
+        type: number
+      body:
+        type: object
+        description: The JSON body that is returned.
+      responseHeaders:
+        type: object
+        description: Key-value pairs respresenting HTTP headers to be returned (optional).
+        properties:
+          key:
+            type: string
+            description: value
+      delay:
+        type: number
+        description: The amount of time that should pass before the mock response is returned (in milliseconds). Defaults to 0 (optional).
+      times:
+        type: number
+        description: The number of times the mock response should be returned before removing itself. Defaults to âˆž (optional).
+        
+        
+
+
   Product:
     type: object
     properties:
