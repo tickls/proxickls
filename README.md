@@ -8,13 +8,13 @@ A lightweight HTTP(S) mock proxy aimed at mocking responses of REST APIs for fro
 Where ``port`` is the port the proxy server will listen on and ``target`` is the server to which calls that are not mocked will be proxied.
 
 
-#### Setting a mock response
+### Setting a mock response
 
 ``/proxy/setMockResponse``
 
 ``Method:`` **PUT**
 
-Content body
+##### *Content body*
 
      {
          "url": "/the/url/to/override",
@@ -31,15 +31,21 @@ Content body
 
 Setting a delay and/or a number of times are both *optional*! If no delay is given, it defaults to 0. If no number of times is given, it defaults to ∞.
 
-#### Setting multiple delays
+&nbsp;
+&nbsp;
+
+### Setting multiple delays
+
+``Method:`` **POST**
 
 Set multiple delays at once. This will also affect existing mock responses!
 
 ``/proxy/setDelays``
 
-``Method:`` **POST**
+&nbsp;
+&nbsp;
 
-Content body
+##### *Content body*
 
      {
          "delays": [
@@ -54,50 +60,66 @@ Content body
           ]
      }
 
+&nbsp;
+&nbsp;
 
-#### Clear a specific mock response
-
-``/proxy/clearMockResponse``
+### Clear a specific mock response
 
 ``Method:`` **DELETE**
 
-Content body
+``/proxy/clearMockResponse``
+
+&nbsp;
+&nbsp;
+
+##### *Content body*
 
      {
          "url": "/the/mock/url/to/remove"
      }
 
+&nbsp;
+&nbsp;
 
-#### Clear all mock responses
+### Clear all mock responses
 
 ``/proxy/clearAllMockResponses``
 
 ``Method:`` **DELETE**
 
+&nbsp;
+&nbsp;
 
-#### Clear all delays
+### Clear all delays
+
+``Method:`` **DELETE**
 
 Clear all delays. Does *NOT* clear any mock responses however!
 
 ``/proxy/clearAllDelays``
 
-``Method:`` **DELETE**
+&nbsp;
+&nbsp;
 
+### List proxied requests
 
-#### List proxied requests
+``Method:`` **GET**
 
 Generate a list of all the requests that have been proxied through the proxy server and their responses, if any.
 
 ``/proxy/listProxiedRequests?limit=50``
 
-``Method:`` **GET**
+&nbsp;
+&nbsp;
 
-**Parameters:**
+##### **Parameters:**
 
 ``limit`` The maximum number of requests, defaults to ∞.
 
+&nbsp;
+&nbsp;
 
-#### Clear the list of proxied calls
+### Clear the list of proxied calls
 
 ``Method:`` **DELETE**
 
