@@ -34,3 +34,5 @@ node_modules
 
 # Idea project folder
 .idea/
+
+**/.DS_Store
