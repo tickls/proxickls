@@ -35,7 +35,7 @@ Setting a delay and/or a number of times are both *optional*! If no delay is giv
 
 Set multiple delays at once. This will also affect existing mock responses!
 
-``/proxy/setMockResponse``
+``/proxy/setDelays``
 
 ``Method:`` **POST**
 
@@ -86,7 +86,7 @@ Clear all delays. Does *NOT* clear any mock responses however!
 
 #### List proxied requests
 
-Generate a list of all the requests that have been proxied through the proxy server and their responses, if any
+Generate a list of all the requests that have been proxied through the proxy server and their responses, if any.
 
 ``/proxy/listProxiedRequests?limit=50``
 
@@ -94,7 +94,7 @@ Generate a list of all the requests that have been proxied through the proxy ser
 
 **Parameters:**
 
-``limit`` The maximum number of requests, defaults to ∞
+``limit`` The maximum number of requests, defaults to ∞.
 
 
 #### Clear the list of proxied calls
