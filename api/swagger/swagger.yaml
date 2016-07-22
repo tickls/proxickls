@@ -1,8 +1,8 @@
-# Swagger API description for proxickls. https://github.com/ronaldw/proxickls
+# Swagger API description for proxickls. https://github.com/ronaldw/stubber
 swagger: '2.0'
 info:
-  title: Proxickls API
-  description: A lightweight HTTP(S) mock proxy aimed at mocking responses of REST APIs for front-end testing purposes. https://github.com/ronaldw/proxickls
+  title: Stubber API
+  description: A lightweight HTTP(S) mock proxy aimed at mocking responses of REST APIs for front-end testing purposes. https://github.com/ronaldw/stubber.
   version: "1.0.0"
 
 host: 127.0.0.1
