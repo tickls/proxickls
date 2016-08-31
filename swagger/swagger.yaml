@@ -5,7 +5,7 @@ info:
   description: A lightweight HTTP(S) mock proxy aimed at mocking responses of REST APIs for front-end testing purposes. https://github.com/ronaldw/stubber.
   version: "1.0.0"
 
-# TODO: Find a way to change the port programmatically. Possibly using swagger-node: https://github.com/swagger-api/swagger-node.
+# The port is modified at runtime based on the '--port' command line argument. Do not modify here.
 host: localhost:5001
 
 schemes:
