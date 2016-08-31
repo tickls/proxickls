@@ -112,10 +112,6 @@ Generate a map with all the mock responses that have been set for given URLs. Th
 
 ``/proxy/listMockResponses``
 
-##### **Parameters:**
-
-``limit`` The maximum number of requests, defaults to ∞.
-
 &nbsp;
 &nbsp;
 
