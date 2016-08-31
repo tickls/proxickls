@@ -104,6 +104,13 @@ Generate a list of all the requests that have been proxied through the proxy ser
 
 ``/proxy/listProxiedRequests?limit=50``
 
+##### **Parameters:**
+
+``limit`` The maximum number of requests, defaults to ∞.
+
+&nbsp;
+&nbsp;
+
 ### List mock responses
 
 ``Method:`` **GET**
