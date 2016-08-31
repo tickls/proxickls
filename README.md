@@ -104,6 +104,14 @@ Generate a list of all the requests that have been proxied through the proxy ser
 
 ``/proxy/listProxiedRequests?limit=50``
 
+### List mock responses
+
+``Method:`` **GET**
+
+Generate a map with all the mock responses that have been set for given URLs. The value in the map for a given key is the number of times that mock response was returned.
+
+``/proxy/listMockResponses``
+
 ##### **Parameters:**
 
 ``limit`` The maximum number of requests, defaults to ∞.
