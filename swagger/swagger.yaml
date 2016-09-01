@@ -59,6 +59,12 @@ paths:
       responses:
         200:
           description: All delays, if any, were succesfully deleted.
+  /listMockResponses:
+      get:
+        summary: Display a map with the mock responses that have been set. For every URL, this map contains how many times the mock response for that URL was returned.
+        responses:
+          200:
+            description: If a map with mock responses was able to be retrieved successfully.
   /listProxiedRequests:
     get:
       summary: Display a list of calls that were proxied. This includes the HTTP status code, the headers that were received and returned and the respective Unix timestamps for when the request was sent and a response received. The calls are displayed in chronological order (descending).
