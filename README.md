@@ -4,7 +4,19 @@ After you have installed [NodeJS](http://www.nodejs.org) and ran `npm install`:
 
 ``node bin/index --target=http://targethost.com --port=5001 (optional)``
 
-Where ``port`` is the port the proxy server will listen on and ``target`` is the server to which calls that are not mocked will be proxied.
+Where ``port`` is the port the proxy server will listen on and ``target`` is the server to which calls that are not mocked will be proxied. The ``port`` defaults to ``5001``.
+
+&nbsp;
+&nbsp;
+
+##### *Swagger* #####
+It is also possible to supply a separate ``swaggerHost`` and ``swaggerPort`` in case you want the Swagger UI's "try-it-out" feature to work and `localhost`
+is not the address at which the server will be available publicly - for instance if your application is deployed on AWS. If you don't supply these parameters, `localhost` is assumed
+as a host and the port is either ``5001`` or the value of ``port``.
+
+``node bin/index --target=http://targethost.com --port=5001 --swaggerHost=http://www.anotherhost.com --swaggerPort=5002``
+
+The logs will report where the Swagger endpoint can be reached.
 
 &nbsp;
 &nbsp;
