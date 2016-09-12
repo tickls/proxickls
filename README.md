@@ -10,11 +10,11 @@ Where ``port`` is the port the proxy server will listen on and ``target`` is the
 &nbsp;
 
 ##### *Swagger* #####
-It is also possible to supply a separate ``swaggerHost`` and ``swaggerPort`` in case you want the Swagger UI's "try-it-out" feature to work and `localhost`
-is not the address at which the server will be available publicly - for instance if your application is deployed on AWS. If you don't supply these parameters, `localhost` is assumed
+It is also possible to supply a separate ``swaggerHost`` in case you want the Swagger UI's "try-it-out" feature to work and `localhost`
+is not the address at which the server will be available publicly - for instance if your application is deployed on AWS. If you don't supply this parameter, `localhost` is assumed
 as a host and the port is either ``5001`` or the value of ``port``.
 
-``node bin/index --target=http://targethost.com --port=5001 --swaggerHost=http://www.anotherhost.com --swaggerPort=5002``
+``node bin/index --target=http://targethost.com --port=5001 --swaggerHost=http://www.anotherhost.com:5002/somePath``
 
 The logs will report where the Swagger endpoint can be reached.
 
