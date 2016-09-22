@@ -1,14 +1,11 @@
 {
   "name": "proxickls",
   "version": "0.1.0",
-  "description": "A lightweight HTTP(S) mock proxy aimed at mocking responses of REST APIs for front-end testing purposes",
+  "description": "A lightweight HTTP(S) proxy and mock server aimed at testing REST APIs from a front-end perspective.",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tickls/proxickls.git"
+    "url": "git+https://github.com/ronaldw/stubber.git"
   },
   "keywords": [
     "proxy",
@@ -16,7 +13,7 @@
     "test",
     "testing"
   ],
-  "author": "Evan Kluin",
+  "author": "Evan Kluin & Ronald Wolvers",
   "license": "GPL-3.0",
   "dependencies": {
     "colors": "^1.1.2",
@@ -25,7 +22,7 @@
     "optimist": "^0.6.1"
   },
   "bugs": {
-    "url": "https://github.com/tickls/proxickls/issues"
+    "url": "https://github.com/ronaldw/stubber/issues"
   },
-  "homepage": "https://github.com/tickls/proxickls#readme"
+  "homepage": "https://github.com/ronaldw/stubber#readme"
 }

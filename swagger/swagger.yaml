@@ -1,0 +1,116 @@
+# Swagger API description for proxickls. https://github.com/ronaldw/stubber
+swagger: '2.0'
+info:
+  title: Stubber API
+  description: A lightweight HTTP(S) mock proxy aimed at mocking responses of REST APIs for front-end testing purposes. https://github.com/ronaldw/stubber.
+  version: "1.0.0"
+
+# The port is modified at runtime based on the '--port' command line argument. Do not modify here.
+host: localhost:5001
+
+schemes:
+  - http
+
+basePath: /proxy
+
+consumes:
+  - application/json
+  
+paths:
+  /setMockResponse:
+    put:
+      summary: Set a mock response for a given URL.
+      responses:
+        200: 
+          description: Mock response was succesfully set.
+      parameters:
+        - name: Mock response specification JSON object.
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/MockResponse"
+  /setDelays:
+    post:
+      summary: Set delays for multiple URLs at once. This will also affect existing mock responses. If a delay for a given URL already exists, it will be overwritten.
+      responses:
+        200:
+          description: Delays for the given URLS were successfully set.
+      parameters:
+        - name: Delays JSON object.
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/Delays"
+  /clearMockResponse:
+    delete:
+      summary: Clear the mock response set for a specific URL.
+      responses:
+        200:
+          description: The mock response, if any, for the given URL was succesfully deleted.
+  /clearAllMockResponses:
+    delete:
+      summary: Clear all mock responses that were set, if any.
+      responses:
+        200:
+          description: All mock responses, if any, were succesfully deleted.
+  /clearAllDelays:
+    delete:
+      summary: Clear all delays that were set, if any.
+      responses:
+        200:
+          description: All delays, if any, were succesfully deleted.
+  /listMockResponses:
+      get:
+        summary: Display a map with the mock responses that have been set. For every URL, this map contains how many times the mock response for that URL was returned.
+        responses:
+          200:
+            description: If a map with mock responses was able to be retrieved successfully.
+  /listProxiedRequests:
+    get:
+      summary: Display a list of calls that were proxied. This includes the HTTP status code, the headers that were received and returned and the respective Unix timestamps for when the request was sent and a response received. The calls are displayed in chronological order (descending).
+      responses:
+        200:
+          description: If a list of proxied requests was able to be retrieved successfully.
+  /clearProxiedCalls:
+    delete:
+      summary: Clear the list of proxied calls.
+      responses:
+        200:
+          description: If the list of proxied requests was successfully cleared.
+definitions:
+  MockResponse:
+    type: object
+    properties:
+      url:
+        type: string
+      statusCode: 
+        type: integer
+      body:
+        type: object
+        description: The JSON body that is returned.
+      responseHeaders:
+        type: object
+        description: Key-value pairs respresenting HTTP headers to be returned (optional).
+        properties:
+          key:
+            type: string
+            description: value
+      delay:
+        type: integer
+        description: The amount of time that should pass before the mock response is returned (in milliseconds). Defaults to 0 (optional).
+      times:
+        type: number
+        description: The number of times the mock response should be returned before removing itself. Defaults to âˆž (optional).
+  Delays:
+    properties:
+      delays:
+        type: array
+        items:
+          $ref: "#/definitions/Delay"
+  Delay:
+    type: object
+    properties:
+      url:
+        type: string
+      delay:
+        type: integer

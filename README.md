@@ -1,25 +1,33 @@
-# proxickls
+### *Starting the proxy*
 
-
-*WIP*
-
-
-A lightweight HTTP(S) mock proxy aimed at mocking responses of REST APIs for front-end testing purposes.
-
-## Starting proxickls
+After you have installed [NodeJS](http://www.nodejs.org) and ran `npm install`: 
 
 ``node bin/index --target=http://targethost.com --port=5001 (optional)``
 
-Where ``port`` is the port the proxy server will listen on and ``target`` is the server to which calls that are not mocked will be proxied.
+Where ``port`` is the port the proxy server will listen on and ``target`` is the server to which calls that are not mocked will be proxied. The ``port`` defaults to ``5001``.
 
+&nbsp;
+&nbsp;
 
-#### Setting a mock response
+##### *Swagger* #####
+It is also possible to supply a separate ``swaggerHost`` in case you want the Swagger UI's "try-it-out" feature to work and `localhost`
+is not the address at which the server will be available publicly - for instance if your application is deployed on AWS. If you don't supply this parameter, `localhost` is assumed
+as a host and the port is either ``5001`` or the value of ``port``.
 
-``/proxy/setMockResponse``
+``node bin/index --target=http://targethost.com --port=5001 --swaggerHost=http://www.anotherhost.com:5002/somePath``
+
+The logs will report where the Swagger endpoint can be reached.
+
+&nbsp;
+&nbsp;
+
+### Setting a mock response
 
 ``Method:`` **PUT**
 
-Content body
+``/proxy/setMockResponse``
+
+##### *Content body*
 
      {
          "url": "/the/url/to/override",
@@ -28,30 +36,26 @@ Content body
              "sample": "response"
          },
          "responseHeaders": {
-             "Authorization": "Bearer ABCDEFABCDEFABCDEFABCDEFABCDEF",
-             "X-Proxickls": "Some Mock Response Header"
+             "key": "value",
          },
-         delay : 2000
+         delay : 2000,
+         times: 5
      }
 
-Setting a delay is optional!
+Setting a delay and/or a number of times are both *optional*! If no delay is given, it defaults to 0. If no number of times is given, it defaults to ∞.
 
-  * Clearing all mock responses can be cleared with sending a DELETE call to http://localhost:5080/proxy/clearAllMockResponses
-  * Clearing a specific mock response can be done by sending a DELETE call to http://localhost:5080/proxy/clearMockResponse with the following JSON structure as body:
-     {
-         "url": "/the/url/to/override"
-     }
-  * Clearing all delays can be done by sending a DELETE call to http://localhost:5080/proxy/clearDelays
+&nbsp;
+&nbsp;
 
-#### Setting multiple delays
-
-Set multiple delays at once. This will also affect existing mock responses!
-
-``/proxy/setMockResponse``
+### Setting multiple delays
 
 ``Method:`` **POST**
 
-Content body
+Set multiple delays at once. This will also affect existing mock responses!
+
+``/proxy/setDelays``
+
+##### *Content body*
 
      {
          "delays": [
@@ -66,48 +70,72 @@ Content body
           ]
      }
 
+&nbsp;
+&nbsp;
 
-#### Clear a specific mock response
-
-``/proxy/clearMockResponse``
+### Clear a specific mock response
 
 ``Method:`` **DELETE**
 
-Content body
+``/proxy/clearMockResponse``
+
+##### *Content body*
 
      {
          "url": "/the/mock/url/to/remove"
      }
 
-#### Clear all mock responses
+&nbsp;
+&nbsp;
+
+### Clear all mock responses
 
 ``/proxy/clearAllMockResponses``
 
 ``Method:`` **DELETE**
 
-#### Clear all delays
+&nbsp;
+&nbsp;
 
-Clear all delays. Does NOT clear any mock responses however!
-
-``/proxy/clearAllDelays``
+### Clear all delays
 
 ``Method:`` **DELETE**
 
-#### List proxied requests
+Clear all delays. Does *NOT* clear any mock responses however!
 
-Generate a list of all the requests that have been proxied through the proxy server and their responses (if any)
+``/proxy/clearAllDelays``
 
-``/proxy/listProxiedRequests?limit=50``
+&nbsp;
+&nbsp;
+
+### List proxied requests
 
 ``Method:`` **GET**
 
-**Parameters:**
+Generate a list of all the requests that have been proxied through the proxy server and their responses, if any.
 
-``limit`` The maximum number of requests (defaults to unlimited)
+``/proxy/listProxiedRequests?limit=50``
 
-#### Clear the list of proxied calls
+##### **Parameters:**
+
+``limit`` The maximum number of requests, defaults to ∞.
+
+&nbsp;
+&nbsp;
+
+### List mock responses
+
+``Method:`` **GET**
+
+Generate a map with all the mock responses that have been set for given URLs. The value in the map for a given key is the number of times that mock response was returned.
+
+``/proxy/listMockResponses``
+
+&nbsp;
+&nbsp;
+
+### Clear the list of proxied calls
 
 ``Method:`` **DELETE**
 
 ``/proxy/clearProxiedCalls``
-
